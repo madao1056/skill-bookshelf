@@ -675,6 +675,92 @@
     letter-spacing: 0.08em;
   }
 
+  /* ===== Changelog ===== */
+  .changelog-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 20px;
+  }
+
+  .changelog-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-left: 8px;
+  }
+
+  .changelog-icon {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .changelog-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .changelog-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .changelog-list {
+    padding: 0 8px;
+  }
+
+  .changelog-entry {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .changelog-date {
+    font-size: 12px;
+    color: var(--yellow);
+    opacity: 0.7;
+    white-space: nowrap;
+    min-width: 80px;
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 0.03em;
+  }
+
+  .changelog-body {
+    flex: 1;
+  }
+
+  .changelog-action {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+  }
+
+  .changelog-tags {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+
+  .changelog-tag {
+    font-size: 10px;
+    padding: 2px 8px;
+    border: 1px solid rgba(250,215,7,0.2);
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.05em;
+  }
+
   /* ===== Footer ===== */
   .footer {
     text-align: center;
@@ -797,6 +883,18 @@
   </section>
 </main>
 
+<!-- ===== 更新履歴 ===== -->
+<section class="changelog-section">
+  <div class="changelog-header">
+    <div class="changelog-icon">&#x1f4dc;</div>
+    <div>
+      <div class="changelog-title">更新履歴</div>
+      <div class="changelog-sub">Changelog</div>
+    </div>
+  </div>
+  <div class="changelog-list" id="changelog"></div>
+</section>
+
 <footer class="footer">
   <p>&copy; 2026 AI Skill Library</p>
 </footer>
@@ -804,6 +902,13 @@
 <div class="bv-overlay" id="book-viewer"></div>
 
 <script>
+var CHANGELOG = [
+  { date: '2026-05-22', action: 'SNS投稿スキル群を2026年戦略に整合', tags: ['lark-post', 'sns-content-generator', 'x-post-generator'], detail: 'X=技術ノウハウ入口→プロダクト出口、Facebook=農業×DX×AIプロセスエコノミー型に更新' },
+  { date: '2026-05-22', action: 'Xアルゴリズム2026対応を全スキルに反映', tags: ['x-post-generator', 'sns-content-generator'], detail: 'Grok Transformerモデル対応。返信27倍・外部リンクペナルティ等のシグナル情報を組み込み' },
+  { date: '2026-05-19', action: 'ウォッチリスト管理スキルを新規追加', tags: ['watchlist'], detail: '米国株自動売買のウォッチリスト管理機能' },
+  { date: '2026-05-15', action: '通知フィルタにブロック対象を追加', tags: ['notification-filter'], detail: 'caricarina, ブックライブ, フリーウェイジャパン, note を追加' },
+];
+
 var SKILLS = {
   secretary: {
     color: '#2d4a8c', textColor: '#fff',
@@ -1405,6 +1510,25 @@ function closeBook() {
   document.body.style.overflow = '';
   _activeBook = null;
 }
+
+/* ===== Changelog Render ===== */
+(function renderChangelog() {
+  var el = document.getElementById('changelog');
+  if (!el || !CHANGELOG.length) return;
+  el.innerHTML = CHANGELOG.map(function(entry) {
+    var tags = entry.tags.map(function(t) {
+      return '<span class="changelog-tag">' + t + '</span>';
+    }).join('');
+    return '<div class="changelog-entry">' +
+      '<div class="changelog-date">' + entry.date + '</div>' +
+      '<div class="changelog-body">' +
+        '<div class="changelog-action">' + entry.action + '</div>' +
+        (entry.detail ? '<div class="changelog-action" style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px">' + entry.detail + '</div>' : '') +
+        '<div class="changelog-tags">' + tags + '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+})();
 
 /* ===== Event Listeners ===== */
 document.getElementById('book-viewer').addEventListener('click', function(e) {
