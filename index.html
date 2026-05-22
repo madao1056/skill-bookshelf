@@ -981,9 +981,11 @@ function openBook(book, dept) {
   // Book container
   bvBook = ce('div', 'bv-book');
 
-  // Spine background (visible when cover is showing)
+  // Spine background (hidden on cover, visible after first flip)
   var spine = ce('div', 'bv-spine');
+  spine.id = 'bv-spine-bg';
   spine.style.background = 'linear-gradient(135deg, ' + darken(data.color, 0.6) + ', ' + darken(data.color, 0.4) + ')';
+  spine.style.display = 'none';
   bvBook.appendChild(spine);
 
   // Left page (static, updated on flip)
@@ -1327,14 +1329,18 @@ function updateBookNav(book, dept, data) {
   // Update left page content
   while (bvLeftPage.firstChild) bvLeftPage.removeChild(bvLeftPage.firstChild);
 
+  // Show/hide spine background and left page based on cover state
+  var spineBg = document.getElementById('bv-spine-bg');
   if (bvCurrent > 0) {
     bvLeftPage.style.display = '';
+    if (spineBg) spineBg.style.display = '';
     var builderIdx = bvCurrent - 1;
     if (builderIdx < leftBuilders.length) {
       leftBuilders[builderIdx](bvLeftPage, book, dept, data);
     }
   } else {
     bvLeftPage.style.display = 'none';
+    if (spineBg) spineBg.style.display = 'none';
   }
 
   // Update nav buttons
