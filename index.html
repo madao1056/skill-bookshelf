@@ -374,11 +374,13 @@
 
   .bv-front {
     border-radius: 0 8px 8px 0;
+    cursor: pointer;
   }
 
   .bv-back {
     transform: rotateY(180deg);
     border-radius: 8px 0 0 8px;
+    cursor: pointer;
   }
 
   /* Parchment page style */
@@ -996,13 +998,14 @@ function openBook(book, dept) {
   // === Page 0: Cover ===
   var p0 = ce('div', 'bv-page');
   p0.style.zIndex = '3';
-  p0.addEventListener('click', flipNext);
 
   var f0 = ce('div', 'bv-front');
+  f0.addEventListener('click', flipNext);
   buildCoverFront(f0, book, dept, data);
   p0.appendChild(f0);
 
   var b0 = ce('div', 'bv-back');
+  b0.addEventListener('click', flipPrev);
   var b0p = ce('div', 'bv-parchment-back');
   b0.appendChild(b0p);
   p0.appendChild(b0);
@@ -1013,13 +1016,14 @@ function openBook(book, dept) {
   // === Page 1: Description ===
   var p1 = ce('div', 'bv-page');
   p1.style.zIndex = '2';
-  p1.addEventListener('click', flipNext);
 
   var f1 = ce('div', 'bv-front');
+  f1.addEventListener('click', flipNext);
   buildDescPage(f1, book, dept, data);
   p1.appendChild(f1);
 
   var b1 = ce('div', 'bv-back');
+  b1.addEventListener('click', flipPrev);
   buildTagsPageBack(b1, book, dept, data);
   p1.appendChild(b1);
 
@@ -1029,13 +1033,14 @@ function openBook(book, dept) {
   // === Page 2: Integration detail ===
   var p2 = ce('div', 'bv-page');
   p2.style.zIndex = '1';
-  p2.addEventListener('click', flipNext);
 
   var f2 = ce('div', 'bv-front');
+  f2.addEventListener('click', flipNext);
   buildIntegrationPage(f2, book, dept, data);
   p2.appendChild(f2);
 
   var b2 = ce('div', 'bv-back');
+  b2.addEventListener('click', flipPrev);
   buildBackCover(b2, book, dept, data);
   p2.appendChild(b2);
 
