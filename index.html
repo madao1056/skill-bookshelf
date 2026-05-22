@@ -396,13 +396,7 @@
     border-left: 1px solid #e0d6c2;
     box-shadow: inset -10px 0 28px rgba(0,0,0,0.06), 3px 0 10px rgba(0,0,0,0.1);
     border-radius: 0 8px 8px 0;
-    overflow-y: auto;
-  }
-
-  .bv-parchment::-webkit-scrollbar { width: 3px; }
-  .bv-parchment::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.1);
-    border-radius: 3px;
+    overflow: hidden;
   }
 
   .bv-parchment-back {
@@ -416,13 +410,7 @@
     border-right: 1px solid #e0d6c2;
     box-shadow: inset 10px 0 28px rgba(0,0,0,0.06), -3px 0 10px rgba(0,0,0,0.1);
     border-radius: 8px 0 0 8px;
-    overflow-y: auto;
-  }
-
-  .bv-parchment-back::-webkit-scrollbar { width: 3px; }
-  .bv-parchment-back::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.1);
-    border-radius: 3px;
+    overflow: hidden;
   }
 
   /* Cover */
@@ -1212,20 +1200,26 @@ function buildIntegrationPage(container, book, dept, data) {
     p.appendChild(grid);
   }
 
+  // Scrollable area for department list
+  var scrollWrap = ce('div');
+  scrollWrap.style.flex = '1';
+  scrollWrap.style.minHeight = '0';
+  scrollWrap.style.overflowY = 'auto';
+
   // Department info
   var deptLabel = ce('div', 'bv-chapter');
   deptLabel.style.color = data.color;
-  deptLabel.style.marginTop = '24px';
+  deptLabel.style.marginTop = '16px';
   deptLabel.style.marginBottom = '8px';
   deptLabel.textContent = DEPT_NAMES[dept] + '\u306e\u4ed6\u306e\u4ed5\u7d44\u307f';
-  p.appendChild(deptLabel);
+  scrollWrap.appendChild(deptLabel);
 
   var list = ce('div', 'bv-feature-list');
   var books = data.books || [];
   books.forEach(function(b) {
     if (b.title === book.title) return;
     var item = ce('div', 'bv-feature-item');
-    item.style.padding = '6px 0';
+    item.style.padding = '5px 0';
     item.style.fontSize = '13px';
 
     var bullet = ce('div', 'bv-feature-bullet', '\u2022');
@@ -1240,7 +1234,8 @@ function buildIntegrationPage(container, book, dept, data) {
 
     list.appendChild(item);
   });
-  p.appendChild(list);
+  scrollWrap.appendChild(list);
+  p.appendChild(scrollWrap);
 
   container.appendChild(p);
 }
