@@ -109,6 +109,19 @@
     background: var(--yellow); opacity: 0.5;
   }
   .work:hover { transform: translateY(-3px); border-color: var(--line); }
+  .work .thumb {
+    margin: -20px -20px 4px; height: 150px; border-radius: 12px 12px 0 0; overflow: hidden;
+    position: relative; display: flex; align-items: center; justify-content: center;
+  }
+  .work .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .work .thumb.ph {
+    background: linear-gradient(135deg, var(--navy), #2c3f86);
+  }
+  .work .thumb.ph span {
+    font-family: 'Shippori Mincho', serif; font-size: 13px; letter-spacing: 0.12em;
+    color: rgba(250,215,7,0.85); border: 1px solid rgba(250,215,7,0.35); border-radius: 6px;
+    padding: 6px 14px;
+  }
   .work .role {
     font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--yellow);
   }
@@ -299,6 +312,18 @@ var VOICES = [
   { p: 'トップページのみの依頼でしたが、素早い対応で大変助かり、Notionでの品質チェックが抜かりない点がプロだと感じました。こちらに負担なく動き、見落としも先に気づいて伝え、思いつかないことを提案してくれる。技術はもちろん、対応面が本当に神がかっています。', who: '制作会社 ご担当者様' }
 ];
 
+var IMG = {
+  'EC構築（Shopify）': 'works-img/work1.jpg',
+  '複合施設サービスサイト': 'works-img/work2.jpg',
+  '歯科医院コーポレートサイト': 'works-img/work3.jpg',
+  '不動産サイト': 'works-img/work4.jpg',
+  'ランディングページ制作': 'works-img/work5.jpg',
+  'ブログ系サイト制作': 'works-img/work6.jpg',
+  '株式会社season2様コーポレートサイト': 'works-img/work7.jpg',
+  '株式会社八芳園交流コンテンツプロデュース様コンテンツサイト': 'works-img/work8.jpg'
+};
+function imgFor(t) { return IMG[t.replace(/[ 　]/g, '')]; }
+
 function render(filter) {
   var grid = document.getElementById('works');
   grid.innerHTML = '';
@@ -306,7 +331,12 @@ function render(filter) {
     var el = document.createElement('div');
     el.className = 'work';
     var tags = w.cats.map(function(c){ return '<span>' + c + '</span>'; }).join('');
+    var src = imgFor(w.t);
+    var thumb = src
+      ? '<div class="thumb"><img loading="lazy" src="' + src + '" alt="' + w.t + '"></div>'
+      : '<div class="thumb ph"><span>' + (w.cats[0] || 'Work') + '</span></div>';
     el.innerHTML =
+      thumb +
       '<div class="role">' + w.role + '</div>' +
       (w.award ? '<div class="award">' + w.award + '</div>' : '') +
       '<h3>' + w.t + '</h3>' +
