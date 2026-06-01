@@ -903,6 +903,7 @@
 
 <script>
 var CHANGELOG = [
+  { date: '2026-06-01', action: 'SNS/freee/Lark系スキルのSETUP-GUIDEを生成→新規環境で実機検証', tags: ['receipt', 'freee-invoice', 'lark-task', 'lark-post', 'skill-guide'], detail: '4スキルの共有ガイドをskill-guideテンプレートに整合（コアスクリプト全文埋め込み・npm install手順・.envテンプレ・トラブルシュート拡充）。/tmp配下の新規環境でnpm install〜認証境界まで実機検証しガイド単体での再現性を確認。freee-invoiceは既存ガイドの架空コードを実ソース＋prefecture.js(JIS-1ズレ補正)に修正' },
   { date: '2026-05-29', action: 'codex連携スキルを新規追加', tags: ['codex'], detail: 'Claude Code × OpenAI Codex連携。MCPサーバー方式＋公式プラグイン(openai-codex)方式の両対応。/codex:review・rescue・Review Gate。ChatGPTサブスク認証、サンドボックスログイン注意点を明記' },
   { date: '2026-05-26', action: 'レシートスキル SETUP-GUIDE をLark連携仕様に全面更新', tags: ['receipt', 'skill-guide'], detail: 'Lark経費管理テーブル連携(Step 5.5)・画像添付・税区分ルール・按分機能・ログ保存(Step 5.7)を反映。Lark .env要件・接続テスト追加' },
   { date: '2026-05-26', action: 'レシートスキル大幅更新: Lark連携・画像添付・ログ保存', tags: ['receipt'], detail: 'Step 5.5 Lark経費管理テーブル自動登録、レシート画像のLark Drive添付、Step 5.7 経費登録ログ保存、税区分ルール（法人=対象外/個人=課対仕入）、事業体2値統一、freee_sync_date必須化' },
