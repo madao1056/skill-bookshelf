@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>制作実績 — 橋口 真幸 / Web制作・デザイン</title>
+<meta name="description" content="橋口真幸のWeb制作・デザイン実績。コーポレートサイト・LP・Shopify・WordPress構築からデザイン・DTPまで。東京都・八芳園・四国ガス等の実績。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;700&display=swap">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #1f2e6c;
+    --navy-deep: #141e4a;
+    --navy-card: #24336f;
+    --yellow: #fad707;
+    --yellow-deep: #d4b400;
+    --line: rgba(250,215,7,0.22);
+    --muted: rgba(255,255,255,0.66);
+  }
+  body {
+    min-height: 100vh;
+    background: var(--navy-deep);
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+  a { color: inherit; }
+
+  /* ===== Hero ===== */
+  .hero { text-align: center; padding: 40px 24px 28px; position: relative; }
+  .hero::after {
+    content: ''; position: absolute; bottom: 0; left: 10%; width: 80%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(250,215,7,0.3), transparent);
+  }
+  .back-link {
+    display: inline-block; font-size: 12px; letter-spacing: 0.12em; color: var(--yellow);
+    text-decoration: none; margin-bottom: 18px; opacity: 0.85; transition: opacity .2s;
+  }
+  .back-link:hover { opacity: 1; }
+  .hero-label {
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-family: 'Shippori Mincho', serif; font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700; letter-spacing: 0.05em; margin-bottom: 14px;
+  }
+  .hero h1 span { color: var(--yellow); }
+  .hero p { color: var(--muted); font-size: 14px; max-width: 640px; margin: 0 auto; }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  /* ===== Section ===== */
+  .section { padding: 40px 0 8px; }
+  .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 22px; }
+  .section-head .ja {
+    font-family: 'Shippori Mincho', serif; font-size: 22px; font-weight: 700; letter-spacing: 0.04em;
+  }
+  .section-head .en {
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--yellow);
+  }
+
+  /* ===== Clients strip ===== */
+  .clients { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
+  .client-chip {
+    background: rgba(250,215,7,0.08); border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 16px; font-size: 13px; font-weight: 500;
+  }
+  .client-chip b { color: var(--yellow); font-weight: 700; }
+
+  /* ===== Capability cards ===== */
+  .cap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .cap {
+    background: var(--navy-card); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; padding: 20px 22px;
+  }
+  .cap h3 {
+    font-size: 14px; color: var(--yellow); letter-spacing: 0.06em; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .cap ul { list-style: none; }
+  .cap li { font-size: 13.5px; padding: 3px 0 3px 16px; position: relative; color: rgba(255,255,255,0.85); }
+  .cap li::before { content: '−'; position: absolute; left: 0; color: var(--yellow-deep); }
+  .cap .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .cap .tags span {
+    font-size: 11.5px; background: rgba(255,255,255,0.07); border-radius: 6px; padding: 4px 9px;
+  }
+
+  /* ===== Filter ===== */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .filter-btn {
+    background: transparent; border: 1px solid var(--line); color: #fff; cursor: pointer;
+    border-radius: 999px; padding: 7px 16px; font-size: 12.5px; font-family: inherit;
+    transition: all .18s;
+  }
+  .filter-btn:hover { border-color: var(--yellow); }
+  .filter-btn.active { background: var(--yellow); color: var(--navy-deep); border-color: var(--yellow); font-weight: 700; }
+
+  /* ===== Works grid ===== */
+  .works-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .work {
+    background: var(--navy-card); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;
+    padding: 20px; display: flex; flex-direction: column; gap: 10px; position: relative;
+    transition: transform .2s, border-color .2s; overflow: hidden;
+  }
+  .work::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+    background: var(--yellow); opacity: 0.5;
+  }
+  .work:hover { transform: translateY(-3px); border-color: var(--line); }
+  .work .role {
+    font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--yellow);
+  }
+  .work h3 { font-size: 15.5px; font-weight: 700; line-height: 1.5; }
+  .work .award {
+    display: inline-block; font-size: 11px; background: var(--yellow); color: var(--navy-deep);
+    font-weight: 700; border-radius: 5px; padding: 2px 8px; width: fit-content;
+  }
+  .work .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 2px; }
+  .work .tags span { font-size: 11px; color: var(--muted); background: rgba(255,255,255,0.06); border-radius: 5px; padding: 3px 8px; }
+  .work .desc { font-size: 12.5px; color: rgba(255,255,255,0.78); margin-top: 4px; }
+
+  /* ===== Voices ===== */
+  .voices { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .voice {
+    background: linear-gradient(160deg, var(--navy-card), var(--navy)); border-radius: 12px;
+    padding: 22px 24px; border: 1px solid rgba(255,255,255,0.08); position: relative;
+  }
+  .voice .quote { font-family: 'Shippori Mincho', serif; font-size: 40px; color: var(--line); line-height: 1; position: absolute; top: 10px; left: 16px; }
+  .voice p { font-size: 13.5px; color: rgba(255,255,255,0.9); position: relative; z-index: 1; padding-top: 8px; }
+  .voice .who { margin-top: 12px; font-size: 11.5px; color: var(--yellow); letter-spacing: 0.06em; }
+
+  /* ===== Contact / footer ===== */
+  .contact {
+    margin: 40px 0; background: var(--navy-card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 30px; text-align: center;
+  }
+  .contact h2 { font-family: 'Shippori Mincho', serif; font-size: 22px; margin-bottom: 10px; }
+  .contact p { color: var(--muted); font-size: 13.5px; margin-bottom: 18px; }
+  .contact .mail {
+    display: inline-block; background: var(--yellow); color: var(--navy-deep); font-weight: 700;
+    text-decoration: none; border-radius: 999px; padding: 12px 28px; font-size: 14px;
+    letter-spacing: 0.04em; transition: transform .18s;
+  }
+  .contact .mail:hover { transform: translateY(-2px); }
+  .footer { text-align: center; padding: 30px 20px 50px; color: rgba(255,255,255,0.4); font-size: 12px; }
+  .footer a { color: var(--yellow); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <a class="back-link" href="./index.html">← AI業務基盤 スキルライブラリへ戻る</a>
+  <div class="hero-label">Works &amp; Portfolio</div>
+  <h1>制作<span>実績</span></h1>
+  <p>
+    コーポレートサイト・LP・Shopify・WordPress構築から、デザイン・DTPまで。<br>
+    要件整理から保守まで一気通貫で、制作会社様・事業会社様の現場に伴走してきました。
+  </p>
+</header>
+
+<div class="container">
+
+  <!-- 主な実績 -->
+  <section class="section">
+    <div class="section-head"><div class="ja">主な実績</div><div class="en">Selected Clients</div></div>
+    <div class="clients">
+      <div class="client-chip"><b>東京都</b> スタートアップ・エコシステム 女性活躍推進事業</div>
+      <div class="client-chip"><b>八芳園</b> 交流コンテンツプロデュース コンテンツサイト</div>
+      <div class="client-chip"><b>四国ガス</b> ガス展特設サイト</div>
+      <div class="client-chip"><b>マイナビバイト</b> 求人LP（コンペノミネート）</div>
+    </div>
+  </section>
+
+  <!-- 対応範囲・チーム・スキル -->
+  <section class="section">
+    <div class="section-head"><div class="ja">対応範囲・体制</div><div class="en">Capabilities</div></div>
+    <div class="cap-grid">
+      <div class="cap">
+        <h3>🗂 ご対応可能な相談例</h3>
+        <ul>
+          <li>チーム制作および進行管理</li>
+          <li>WordPress構築</li>
+          <li>静的ページの構築</li>
+          <li>LP制作</li>
+          <li>Shopify構築</li>
+        </ul>
+        <p style="font-size:12px;color:var(--muted);margin-top:10px;">デザインからのご依頼／コーディングからのご依頼、いずれも承ります。</p>
+      </div>
+      <div class="cap">
+        <h3>👥 チーム構成</h3>
+        <ul>
+          <li>デザイナー兼コーダー：2名</li>
+          <li>デザイナー：3名（うちShopify：1名）</li>
+          <li>コーダー：3名（うちShopify構築：1名）</li>
+        </ul>
+        <p style="font-size:12px;color:var(--muted);margin-top:10px;">小〜中規模を、品質を保ちながらチームで巻き取れる体制です。</p>
+      </div>
+      <div class="cap">
+        <h3>🧰 スキル・ツール</h3>
+        <div class="tags">
+          <span>Figma</span><span>XD</span><span>HTML</span><span>CSS</span><span>JavaScript</span>
+          <span>EJS</span><span>PHP</span><span>Liquid</span><span>GAS</span>
+          <span>WordPress</span><span>Shopify</span><span>GitHub</span><span>Backlog</span><span>Notion</span>
+          <span>Chatwork</span><span>Slack</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 制作実績一覧 -->
+  <section class="section">
+    <div class="section-head"><div class="ja">制作実績の一覧</div><div class="en">Works</div></div>
+    <div class="filters" id="filters"></div>
+    <div class="works-grid" id="works"></div>
+  </section>
+
+  <!-- お客様の声 -->
+  <section class="section">
+    <div class="section-head"><div class="ja">お客様の声</div><div class="en">Testimonials</div></div>
+    <div class="voices" id="voices"></div>
+  </section>
+
+  <!-- コンタクト -->
+  <section class="contact">
+    <h2>制作パートナーをお探しでしたら</h2>
+    <p>ディレクションからコーディング・運用保守まで、一気通貫でお引き受けできます。<br>10分ほどのオンラインでも、お気軽にご相談ください。</p>
+    <a class="mail" href="mailto:gussan.web@gmail.com">gussan.web@gmail.com へ相談する</a>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <p>橋口 真幸 — Web制作・デザイン / <a href="./index.html">AI業務基盤 スキルライブラリ</a></p>
+</footer>
+
+<script>
+var WORKS = [
+  { t: '東京都 スタートアップ・エコシステムにおける女性活躍推進事業', role: 'エンジニア', cats: ['サービスサイト'], award: '' },
+  { t: '株式会社八芳園交流コンテンツプロデュース様 コンテンツサイト', role: 'エンジニア', cats: ['コーポレートサイト','WordPress','コーディング'], award: '',
+    desc: 'SEOを重視した適切なマークアップ、サイトスピード「A」での納品が要件。セマンティックHTMLで初回から「A」評価のページが多く、プラグインに頼らずカスタムフィールド・関連記事表示を工夫し、管理しやすいよう手順書を添えて納品しました。' },
+  { t: '四国ガス ガス展特設サイト', role: 'エンジニア', cats: ['コーディング','特設サイト'], award: '' },
+  { t: '複合施設サービスサイト', role: 'エンジニア', cats: ['サービスサイト','コーディング','レスポンシブ'], award: '' },
+  { t: '歯科医院コーポレートサイト', role: 'エンジニア', cats: ['コーポレートサイト','WordPress','コーディング'], award: '' },
+  { t: '不動産サイト', role: 'エンジニア', cats: ['WordPress','コーディング','レスポンシブ'], award: '' },
+  { t: 'ブログ系サイト制作', role: 'エンジニア', cats: ['コーポレートサイト','WordPress','コーディング'], award: '' },
+  { t: '三友運輸株式会社様 コーポレートサイト', role: 'エンジニア', cats: ['コーポレートサイト'], award: '' },
+  { t: '社会福祉法人 悠々会様', role: 'エンジニア', cats: ['コーポレートサイト'], award: '' },
+  { t: 'chouetteria シュエッテリア様', role: 'エンジニア', cats: ['コーポレートサイト'], award: '' },
+  { t: '株式会社season2様 コーポレートサイト', role: 'エンジニア', cats: ['コーポレートサイト'], award: '' },
+  { t: 'サンライズパブリッシング様', role: 'エンジニア', cats: ['WordPress','コーディング'], award: '' },
+  { t: 'みのむしキャンプ場様', role: 'エンジニア', cats: ['WordPress','コーディング'], award: '' },
+  { t: '美容クリニック', role: 'エンジニア', cats: ['コーポレートサイト','WordPress','コーディング'], award: '' },
+  { t: 'COCO ROOM様 ランディングページ', role: 'エンジニア', cats: ['LP'], award: '' },
+  { t: '日本おそうじ代行様 LP', role: 'エンジニア', cats: ['LP','コーディング'], award: '' },
+  { t: '経営企画LP', role: 'エンジニア', cats: ['LP','コーディング'], award: '' },
+  { t: 'ランディングページ制作', role: 'エンジニア', cats: ['LP','コーディング','レスポンシブ'], award: '' },
+  { t: 'EC構築（Shopify）', role: 'エンジニア', cats: ['Shopify','ECサイト'], award: '' },
+  { t: 'EC構築（Shopify）', role: 'エンジニア', cats: ['Shopify','ECサイト'], award: '' },
+  { t: 'オーガニックコスメのShopifyサイトデザイン制作', role: 'デザイナー', cats: ['Shopify','ECサイト','デザイン'], award: '' },
+  { t: 'ミライ機器販売株式会社様 コーポレートサイト', role: 'デザイナー', cats: ['コーポレートサイト','デザイン'], award: 'コーポレートサイト',
+    desc: '飲食店オーナーに機器へ興味を持ってもらうことが目的。青色で信頼感を出し、笑顔の従業員写真で「飲食店の未来を明るくする」想いを表現。ロゴのイメージをあしらいに落とし込み統一感を持たせました。' },
+  { t: '法律事務所のサイトデザイン制作', role: 'デザイナー', cats: ['コーポレートサイト','デザイン'], award: '' },
+  { t: '制作会社のサイトデザイン制作', role: 'デザイナー', cats: ['コーポレートサイト','デザイン'], award: '' },
+  { t: 'オリジナル陶磁器制作会社様のサイトデザイン制作', role: 'デザイナー', cats: ['サービスサイト','デザイン'], award: '' },
+  { t: '化粧品 SNSクリエイティブ', role: 'デザイナー', cats: ['デザイン','コンペ'], award: 'コンペ採用',
+    desc: '30代女性に訴求するクリエイティブ。商品が鏡のような見た目であることから、反射を強調する鏡のシェイプとテクスチャを交差させ、製品特徴を図形で表現。視認性の良さが評価され採用いただきました。' },
+  { t: '健康食品のバナー広告', role: 'デザイナー', cats: ['デザイン','コンペ'], award: 'コンペ採用',
+    desc: 'LP遷移用バナー（Instagram/Facebook掲載）。40〜50代の血糖値が気になる層に向け、高級感のあるイメージで「効果のある良いもの」と感じてもらう軸で訴求しました。' },
+  { t: 'マイナビバイト 塾講師バイトのLP', role: 'デザイナー', cats: ['デザイン','コンペ','LP'], award: 'コンペノミネート',
+    desc: '一目で女性向け・学習感が伝わるデザインが指定。女子大生のペルソナを設定し、メリット比較を色分けで整理、赤マルでまとめを囲って学習感を演出。最後まで悩んだ作品としてノミネートいただきました。' },
+  { t: 'ECOLIFE COCO フランチャイズLP', role: 'デザイナー', cats: ['デザイン','LP'], award: 'デザイン',
+    desc: '紙のみだったFC資料をWebでも伝わる形に。子供を主役にしたFVと、オーナーの明るい未来を想像させるFVの2案を提示し採用。既存ロゴのトンマナに合わせ信頼感のあるブルーで統一しました。' },
+  { t: '古山陽一行政書士事務所 ロゴ制作', role: 'デザイナー', cats: ['デザイン','ロゴ'], award: 'ロゴデザイン',
+    desc: '母体の会計事務所と関連が伝わるロゴが要件。親会社の太陽モチーフを赤い円で継承し、行政書士=書く仕事から羽ペンを着想。代表イニシャル「F」と、太陽との組み合わせで「Y」を表現しました。' },
+  { t: 'ライフデザイン整体様 チラシ', role: 'デザイナー', cats: ['デザイン','DTP'], award: 'DTP',
+    desc: '幅広い年代に興味を持ってもらう販促物。趣味から仕事まで人生を楽しむ想いを、躍動感のある写真と文字組で表現。強調したい箇所が伝わるよう工夫しました。' },
+  { t: 'ライフデザイン整体様 パンフレット', role: 'デザイナー', cats: ['デザイン','DTP'], award: 'DTP',
+    desc: '当初は郵送・手渡し用の想定でしたが、資料請求時にQRで「郵送かメールか選べる」導線を提案し採用。さらにWeb閲覧しやすい軽量PDFも自主的に用意し、大変喜んでいただきました。' }
+];
+
+var FILTERS = [
+  { key: 'all',   label: 'すべて' },
+  { key: 'コーポレートサイト', label: 'コーポレート' },
+  { key: 'LP',     label: 'LP' },
+  { key: 'Shopify', label: 'Shopify・EC' },
+  { key: 'WordPress', label: 'WordPress' },
+  { key: 'サービスサイト', label: 'サービスサイト' },
+  { key: 'デザイン', label: 'デザイン' },
+  { key: 'DTP',    label: 'DTP・ロゴ' }
+];
+
+var VOICES = [
+  { p: '細かい要望もすぐにバッチリ対応いただき、本当に感謝です。', who: '制作パートナー様' },
+  { p: 'ぐっさんとお仕事できて、Notionの紹介や管理の工夫も「ここまで配慮をするべきなんだ」と学びになることばかりで、贅沢なお仕事でした。', who: 'クライアント様' },
+  { p: '迅速な対応、鬼のように助かります。一度こちらで先方に共有してみますね。', who: '制作会社 ご担当者様' },
+  { p: 'ご相談の段階から、ケースに応じた対応パターンのご提案やデメリットまで教示いただけて、とても分かりやすい。WPの仕様も動画でご共有いただき、丁寧なご対応にいつも感謝しております。', who: 'クライアント様' },
+  { p: 'トップページのみの依頼でしたが、素早い対応で大変助かり、Notionでの品質チェックが抜かりない点がプロだと感じました。こちらに負担なく動き、見落としも先に気づいて伝え、思いつかないことを提案してくれる。技術はもちろん、対応面が本当に神がかっています。', who: '制作会社 ご担当者様' }
+];
+
+function render(filter) {
+  var grid = document.getElementById('works');
+  grid.innerHTML = '';
+  WORKS.filter(function(w){ return filter === 'all' || w.cats.indexOf(filter) !== -1; }).forEach(function(w){
+    var el = document.createElement('div');
+    el.className = 'work';
+    var tags = w.cats.map(function(c){ return '<span>' + c + '</span>'; }).join('');
+    el.innerHTML =
+      '<div class="role">' + w.role + '</div>' +
+      (w.award ? '<div class="award">' + w.award + '</div>' : '') +
+      '<h3>' + w.t + '</h3>' +
+      '<div class="tags">' + tags + '</div>' +
+      (w.desc ? '<div class="desc">' + w.desc + '</div>' : '');
+    grid.appendChild(el);
+  });
+}
+
+(function init(){
+  var fbox = document.getElementById('filters');
+  FILTERS.forEach(function(f, i){
+    var b = document.createElement('button');
+    b.className = 'filter-btn' + (i === 0 ? ' active' : '');
+    b.textContent = f.label;
+    b.onclick = function(){
+      document.querySelectorAll('.filter-btn').forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      render(f.key);
+    };
+    fbox.appendChild(b);
+  });
+  render('all');
+
+  var vbox = document.getElementById('voices');
+  VOICES.forEach(function(v){
+    var el = document.createElement('div');
+    el.className = 'voice';
+    el.innerHTML = '<div class="quote">&ldquo;</div><p>' + v.p + '</p><div class="who">— ' + v.who + '</div>';
+    vbox.appendChild(el);
+  });
+})();
+</script>
+</body>
+</html>
