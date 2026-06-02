@@ -905,6 +905,7 @@
 
 <script>
 var CHANGELOG = [
+  { date: '2026-06-02', action: 'grill-me（仕様詰め）スキルを新規追加', tags: ['grill-me'], detail: 'mattpocock/skillsのgrill-meを.claude/commands形式に移植・日本語化。着手前に計画/設計を一問ずつ容赦なく問い詰めて手戻りを防ぐ。各質問に推奨回答を添える・コードベースで分かることは自分で調べる。kiro spec運用のレビューゲート（生成と評価の分離）として機能' },
   { date: '2026-06-02', action: 'lark-postに投稿前の類似度チェック＋メトリクス還流ループを追加', tags: ['lark-post', 'skill-guide'], detail: 'SNS投稿の重複連発を防ぐため、新規生成前にLark Base直近15件とコア・コンセプト/切り口を照合し被りを回避。投稿後は伸びた型を次回生成に還流（metrics自動取得は将来拡張）。最終選別とタイミング判断は人間が持つ分業を明記。SETUP-GUIDEも同期' },
   { date: '2026-06-01', action: '制作実績ページ(works.html)を新規追加＋トップに動線', tags: ['works'], detail: 'Web制作・デザインの制作実績ページを新設。コーポレート/LP/Shopify/WordPress/デザイン/DTPの32案件をカテゴリフィルタ付きで掲載（東京都・八芳園・四国ガス・マイナビ等）。対応範囲・チーム体制・スキル、お客様の声も収録。トップHeroに「制作実績を見る」CTAを追加し、スキル一覧から制作実績への動線を確保' },
   { date: '2026-06-01', action: 'SNS/freee/Lark系スキルのSETUP-GUIDEを生成→新規環境で実機検証', tags: ['receipt', 'freee-invoice', 'lark-task', 'lark-post', 'skill-guide'], detail: '4スキルの共有ガイドをskill-guideテンプレートに整合（コアスクリプト全文埋め込み・npm install手順・.envテンプレ・トラブルシュート拡充）。/tmp配下の新規環境でnpm install〜認証境界まで実機検証しガイド単体での再現性を確認。freee-invoiceは既存ガイドの架空コードを実ソース＋prefecture.js(JIS-1ズレ補正)に修正' },
