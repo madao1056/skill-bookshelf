@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>制作実績 — 橋口 真幸 / Web制作・デザイン</title>
-<meta name="description" content="橋口真幸のWeb制作・デザイン実績。コーポレートサイト・LP・Shopify・WordPress構築からデザイン・DTPまで。東京都・八芳園・四国ガス等の実績。">
+<meta name="description" content="橋口真幸のWeb制作・デザイン実績。コーポレートサイト・LP・Shopify・WordPress構築からデザインまで。東京都・八芳園・四国ガス等の実績。">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;700&display=swap">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -86,6 +86,10 @@
   .cap .tags span {
     font-size: 11.5px; background: rgba(255,255,255,0.07); border-radius: 6px; padding: 4px 9px;
   }
+
+  /* ===== Video ===== */
+  .video-wrap { position: relative; width: 100%; max-width: 720px; margin: 0 auto; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+  .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
   /* ===== Filter ===== */
   .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
@@ -186,7 +190,7 @@
   <div class="hero-label">Works &amp; Portfolio</div>
   <h1>制作<span>実績</span></h1>
   <p>
-    コーポレートサイト・LP・Shopify・WordPress構築から、デザイン・DTPまで。<br>
+    コーポレートサイト・LP・Shopify・WordPress構築から、デザインまで。<br>
     要件整理から保守まで一気通貫で、制作会社様・事業会社様の現場に伴走してきました。
   </p>
 </header>
@@ -238,6 +242,13 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- 進行の仕組み動画 -->
+  <section class="section">
+    <div class="section-head"><div class="ja">進行の仕組みが1分半でわかる動画</div><div class="en">How I Work</div></div>
+    <div class="video-wrap"><iframe src="https://www.youtube.com/embed/I7Bbq6qCHVM?rel=0" title="進行の仕組み" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <p style="text-align:center;color:var(--muted);font-size:13px;margin-top:14px;">「説明いらずで進む」やり取りの実例を、1分半でご覧いただけます。</p>
   </section>
 
   <!-- 制作実績一覧 -->
@@ -309,13 +320,7 @@ var WORKS = [
   { t: 'マイナビバイト 塾講師バイトのLP', role: 'デザイナー', cats: ['デザイン','コンペ','LP'], award: 'コンペノミネート',
     desc: '一目で女性向け・学習感が伝わるデザインが指定。女子大生のペルソナを設定し、メリット比較を色分けで整理、赤マルでまとめを囲って学習感を演出。最後まで悩んだ作品としてノミネートいただきました。' },
   { t: 'ECOLIFE COCO フランチャイズLP', role: 'デザイナー', cats: ['デザイン','LP'], award: 'デザイン',
-    desc: '紙のみだったFC資料をWebでも伝わる形に。子供を主役にしたFVと、オーナーの明るい未来を想像させるFVの2案を提示し採用。既存ロゴのトンマナに合わせ信頼感のあるブルーで統一しました。' },
-  { t: '古山陽一行政書士事務所 ロゴ制作', role: 'デザイナー', cats: ['デザイン','ロゴ'], award: 'ロゴデザイン',
-    desc: '母体の会計事務所と関連が伝わるロゴが要件。親会社の太陽モチーフを赤い円で継承し、行政書士=書く仕事から羽ペンを着想。代表イニシャル「F」と、太陽との組み合わせで「Y」を表現しました。' },
-  { t: 'ライフデザイン整体様 チラシ', role: 'デザイナー', cats: ['デザイン','DTP'], award: 'DTP',
-    desc: '幅広い年代に興味を持ってもらう販促物。趣味から仕事まで人生を楽しむ想いを、躍動感のある写真と文字組で表現。強調したい箇所が伝わるよう工夫しました。' },
-  { t: 'ライフデザイン整体様 パンフレット', role: 'デザイナー', cats: ['デザイン','DTP'], award: 'DTP',
-    desc: '当初は郵送・手渡し用の想定でしたが、資料請求時にQRで「郵送かメールか選べる」導線を提案し採用。さらにWeb閲覧しやすい軽量PDFも自主的に用意し、大変喜んでいただきました。' }
+    desc: '紙のみだったFC資料をWebでも伝わる形に。子供を主役にしたFVと、オーナーの明るい未来を想像させるFVの2案を提示し採用。既存ロゴのトンマナに合わせ信頼感のあるブルーで統一しました。' }
 ];
 
 var FILTERS = [
@@ -325,8 +330,7 @@ var FILTERS = [
   { key: 'Shopify', label: 'Shopify・EC' },
   { key: 'WordPress', label: 'WordPress' },
   { key: 'サービスサイト', label: 'サービスサイト' },
-  { key: 'デザイン', label: 'デザイン' },
-  { key: 'DTP',    label: 'DTP・ロゴ' }
+  { key: 'デザイン', label: 'デザイン' }
 ];
 
 var VOICES = [
@@ -361,6 +365,14 @@ function findDetail(title) {
   });
   return hit ? D[hit] : null;
 }
+// 情報が薄い案件（画像・公開URL・実質テキストなし）はモーダル不要
+function modalWorthy(d) {
+  if (!d) return false;
+  if ((d.images && d.images.length) || d.live) return true;
+  if ((d.sections || []).some(function(s){ return s.h; })) return true;
+  var len = (d.sections || []).reduce(function(s, x){ return s + ((x.body || '').replace(/https?:\/\/\S+/g, '').length); }, 0);
+  return len > 60;
+}
 
 function render(filter) {
   var grid = document.getElementById('works');
@@ -382,8 +394,8 @@ function render(filter) {
       '<h3>' + w.t + '</h3>' +
       '<div class="tags">' + tags + '</div>' +
       (w.desc ? '<div class="desc">' + w.desc + '</div>' : '') +
-      (detail ? '<div class="more">詳細を見る →</div>' : '');
-    if (detail) { el.className = 'work clickable'; el.onclick = function(){ openModal(w.t); }; }
+      (modalWorthy(detail) ? '<div class="more">詳細を見る →</div>' : '');
+    if (modalWorthy(detail)) { el.className = 'work clickable'; el.onclick = function(){ openModal(w.t); }; }
     grid.appendChild(el);
   });
 }
