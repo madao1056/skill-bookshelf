@@ -354,7 +354,11 @@ function findDetail(title) {
   var D = window.DETAILS || {}, n = norm(title);
   if (D[n]) return D[n];
   var keys = Object.keys(D);
-  var hit = keys.find(function(k){ return k.startsWith(n.slice(0, 8)) || n.startsWith(k.slice(0, 8)) || (n.length >= 6 && k.indexOf(n.slice(0, 6)) !== -1); });
+  var hit = keys.find(function(k){
+    return k.startsWith(n.slice(0, 8)) || n.startsWith(k.slice(0, 8))
+      || (n.length >= 6 && k.indexOf(n.slice(0, 6)) !== -1)
+      || (n.length === k.length && n.slice(0, 3) === k.slice(0, 3) && n.slice(-2) === k.slice(-2)); // 旧字/異体字ゆらぎ吸収
+  });
   return hit ? D[hit] : null;
 }
 
@@ -365,11 +369,12 @@ function render(filter) {
     var el = document.createElement('div');
     el.className = 'work';
     var tags = w.cats.map(function(c){ return '<span>' + c + '</span>'; }).join('');
-    var src = imgFor(w.t);
+    var detail = findDetail(w.t);
+    // サムネ: 手動マップ優先 → 無ければ詳細フル画像の上部 → 無ければグラデ
+    var src = imgFor(w.t) || (detail && detail.images && detail.images[0]) || null;
     var thumb = src
       ? '<div class="thumb"><img loading="lazy" src="' + src + '" alt="' + w.t + '"></div>'
       : '<div class="thumb ph"><span>' + (w.cats[0] || 'Work') + '</span></div>';
-    var detail = findDetail(w.t);
     el.innerHTML =
       thumb +
       '<div class="role">' + w.role + '</div>' +
